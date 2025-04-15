@@ -79,15 +79,23 @@
     function hitungPitagoras() {
       const a = parseFloat(document.getElementById('a').value);
       const b = parseFloat(document.getElementById('b').value);
-      const c = Math.sqrt(a * a + b * b).toFixed(2);
-      document.getElementById('outputPitagoras').textContent = `Hasil: c = ${c}`;
+      if (!isNaN(a) && !isNaN(b)) {
+        const c = Math.sqrt(a * a + b * b).toFixed(2);
+        document.getElementById('outputPitagoras').textContent = `Hasil: c = ${c}`;
+      } else {
+        document.getElementById('outputPitagoras').textContent = "Masukkan nilai yang valid untuk a dan b!";
+      }
     }
 
     function hitungEnergiKinetik() {
       const m = parseFloat(document.getElementById('massa').value);
       const v = parseFloat(document.getElementById('kecepatan').value);
-      const e = 0.5 * m * v * v;
-      document.getElementById('outputEnergi').textContent = `Energi Kinetik: ${e.toFixed(2)} Joule`;
+      if (!isNaN(m) && !isNaN(v)) {
+        const e = 0.5 * m * v * v;
+        document.getElementById('outputEnergi').textContent = `Energi Kinetik: ${e.toFixed(2)} Joule`;
+      } else {
+        document.getElementById('outputEnergi').textContent = "Masukkan nilai yang valid untuk massa dan kecepatan!";
+      }
     }
 
     function tampilkanCeritaKimia() {
@@ -95,6 +103,8 @@
       document.getElementById('outputKimia').textContent = cerita;
     }
   </script>
+</body>
+</html>
 </body>
 </html>
 
