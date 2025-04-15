@@ -1,111 +1,178 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Tools: Belajar Simpel Tapi Jenius</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Tools: Sains dan Matematika</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #f0f9ff, #e0f7fa);
+    }
+    body {
+      margin: 0;
       padding: 2rem;
+      background-color: #f4f6f8;
       color: #333;
     }
-    h1 {
+    header {
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .tool {
-      background: #fff;
-      padding: 1.5rem;
       margin-bottom: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: all 0.3s;
     }
-    .tool:hover {
-      transform: scale(1.01);
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
     }
-    .tool h2 {
-      margin-bottom: 0.5rem;
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.5rem;
+    }
+    input, button {
+      padding: 0.6rem;
+      font-size: 1rem;
+      margin: 0.3rem 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1565c0;
     }
     .output {
       margin-top: 1rem;
+      font-weight: 600;
+      color: #2e7d32;
+    }
+    .premium-toggle {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .premium-toggle button {
+      background-color: #ff6f00;
+      color: white;
+      padding: 0.75rem 2rem;
       font-weight: bold;
-      color: #00796b;
     }
-    input, button, select {
-      padding: 0.5rem;
-      font-size: 1rem;
-      margin: 0.3rem;
-    }
-    .explain {
-      margin-top: 0.5rem;
-      font-style: italic;
-      color: #555;
+    .premium-section {
+      background-color: #fffbea;
+      border-left: 5px solid #ff9800;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      display: none;
     }
   </style>
 </head>
 <body>
-  <h1>📚 AI Tools: Belajar Sains & Matematika</h1>
 
-  <div class="tool">
-    <h2>🔢 Rumus Pitagoras (Simple Visual)</h2>
-    <label>a: <input type="number" id="a"></label>
-    <label>b: <input type="number" id="b"></label>
-    <button onclick="hitungPitagoras()">Hitung</button>
-    <div class="output" id="outputPitagoras"></div>
-    <div class="explain">c² = a² + b² → kayak nyebrang taman lebih cepet daripada muter</div>
+  <header>
+    <h1>AI Tools: Sains dan Matematika</h1>
+    <p>Solusi cerdas untuk belajar fisika, kimia, dan matematika.</p>
+  </header>
+
+  <div class="premium-toggle">
+    <button onclick="togglePremium()">Aktifkan Mode Premium</button>
   </div>
 
-  <div class="tool">
-    <h2>💥 Energi Kinetik</h2>
-    <label>Massa (kg): <input type="number" id="massa"></label>
-    <label>Kecepatan (m/s): <input type="number" id="kecepatan"></label>
-    <button onclick="hitungEnergiKinetik()">Hitung</button>
-    <div class="output" id="outputEnergi"></div>
-    <div class="explain">E = 1/2 × m × v² → makin cepet, makin susah berhenti!</div>
-  </div>
+  <div class="container">
 
-  <div class="tool">
-    <h2>🌊 H₂O = Air (Chemistry Story)</h2>
-    <button onclick="tampilkanCeritaKimia()">Lihat Cerita</button>
-    <div class="output" id="outputKimia"></div>
-    <div class="explain">Cerita: 2 Hidrogen ngajak 1 Oksigen bikin "air squad" 🤝</div>
+    <div class="card">
+      <h2>Rumus Pitagoras</h2>
+      <input type="number" id="a" placeholder="Sisi a">
+      <input type="number" id="b" placeholder="Sisi b">
+      <button onclick="hitungPitagoras()">Hitung</button>
+      <div class="output" id="outputPitagoras"></div>
+    </div>
+
+    <div class="card">
+      <h2>Energi Kinetik</h2>
+      <input type="number" id="massa" placeholder="Massa (kg)">
+      <input type="number" id="kecepatan" placeholder="Kecepatan (m/s)">
+      <button onclick="hitungEnergiKinetik()">Hitung</button>
+      <div class="output" id="outputEnergi"></div>
+    </div>
+
+    <div class="card">
+      <h2>Cerita Kimia: H₂O</h2>
+      <button onclick="tampilkanCeritaKimia()">Lihat Cerita</button>
+      <div class="output" id="outputKimia"></div>
+    </div>
+
+    <div class="card" id="premiumCard" style="display: none;">
+      <h2>Fitur Premium: Rumus Cepat & Tips</h2>
+      <div class="premium-section">
+        <p><strong>Pitagoras Pintar:</strong> Jika a dan b sama, c = a√2.</p>
+        <p><strong>Energi Kinetik Kilat:</strong> E = 0.5mv². Kalau kecepatan dua kali lipat, energi naik 4x!</p>
+        <p><strong>Kimia Konteks:</strong> Visualisasi struktur molekul H₂O dengan analogi kehidupan sehari-hari.</p>
+      </div>
+    </div>
+
   </div>
 
   <script>
+    let premium = false;
+
+    function togglePremium() {
+      premium = !premium;
+      document.getElementById('premiumCard').style.display = premium ? 'block' : 'none';
+    }
+
     function hitungPitagoras() {
-      const a = parseFloat(document.getElementById('a').value);
-      const b = parseFloat(document.getElementById('b').value);
+      const a = parseFloat(document.getElementById("a").value);
+      const b = parseFloat(document.getElementById("b").value);
+      const output = document.getElementById("outputPitagoras");
+
       if (!isNaN(a) && !isNaN(b)) {
         const c = Math.sqrt(a * a + b * b).toFixed(2);
-        document.getElementById('outputPitagoras').textContent = `Hasil: c = ${c}`;
+        output.textContent = `Hasil: c = ${c}`;
       } else {
-        document.getElementById('outputPitagoras').textContent = "Masukkan nilai yang valid untuk a dan b!";
+        output.textContent = "Masukkan nilai numerik yang valid.";
       }
     }
 
     function hitungEnergiKinetik() {
-      const m = parseFloat(document.getElementById('massa').value);
-      const v = parseFloat(document.getElementById('kecepatan').value);
+      const m = parseFloat(document.getElementById("massa").value);
+      const v = parseFloat(document.getElementById("kecepatan").value);
+      const output = document.getElementById("outputEnergi");
+
       if (!isNaN(m) && !isNaN(v)) {
         const e = 0.5 * m * v * v;
-        document.getElementById('outputEnergi').textContent = `Energi Kinetik: ${e.toFixed(2)} Joule`;
+        output.textContent = `Energi Kinetik: ${e.toFixed(2)} Joule`;
       } else {
-        document.getElementById('outputEnergi').textContent = "Masukkan nilai yang valid untuk massa dan kecepatan!";
+        output.textContent = "Masukkan nilai numerik yang valid.";
       }
     }
 
     function tampilkanCeritaKimia() {
-      const cerita = `👯‍♂️ Dua atom Hidrogen + 👩‍🔬 satu Oksigen = 💧 H₂O, tim solid yang susah dipisahin tanpa reaksi!`;
-      document.getElementById('outputKimia').textContent = cerita;
+      const output = document.getElementById("outputKimia");
+      output.textContent = "H₂O terdiri dari dua atom hidrogen yang sangat bersahabat dengan satu atom oksigen. Ikatan mereka kuat dan membentuk cairan kehidupan.";
     }
   </script>
-</body>
-</html>
-</body>
-</html>
 
+</body>
+</html>
 
